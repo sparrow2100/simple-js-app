@@ -22,7 +22,11 @@ let pokemonRepository = (function () {
   }
 
   function add(item) {
-    pokemonList.push(item);
+    if (typeof item === "object") {
+      pokemonList.push(item);
+    } else {
+      console.log("The item you are trying to add is not an object.");
+    }
   }
 
   return {
