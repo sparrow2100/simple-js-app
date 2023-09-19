@@ -1,7 +1,24 @@
 * {
   font-family: Poppins, sans-serif;
+  font-size: 20px;
 }
 
 h1 {
   text-align: center;
+}
+
+.button-main {
+  background-color: #2d7489;
+  color: white;
+  border: none;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.button-main:hover,
+.button-main:focus {
+  background-color: #296272;
+  cursor: pointer;
+  transition: color 250ms ease-in-out;
 }
