@@ -16,7 +16,9 @@ let pokemonRepository = (function () {
   }
 
   function showDetails(pokemon) {
-    console.log(pokemon);
+    loadDetails(pokemon).then(function () {
+      console.log(pokemon);
+    });
   }
 
   function addListItem(pokemon) {
@@ -55,6 +57,28 @@ let pokemonRepository = (function () {
       });
   }
 
+  function loadDetails(item) {
+    let url = item.detailsUrl;
+    return fetch(url)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (details) {
+        item.imageUrl = details.sprites.front_default;
+        item.types = details.types;
+        item.moves = [];
+        for (let i = 0; i < details.moves.length; i++) {
+          item.moves.push(details.moves[i].move);
+          // console.log(item.moves);
+        }
+
+        // item.moves = details.moves[0].move;
+      })
+      .catch(function (e) {
+        console.error(e);
+      });
+  }
+
   return {
     getAll: getAll,
 
@@ -63,6 +87,8 @@ let pokemonRepository = (function () {
     addListItem: addListItem,
 
     loadList: loadList,
+
+    loadDetails: loadDetails,
   };
 })();
 
