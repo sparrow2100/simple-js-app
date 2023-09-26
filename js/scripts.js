@@ -39,11 +39,17 @@ let pokemonRepository = (function () {
   }
 
   function loadList() {
+    let loadingMessage = document.getElementById("loading-message");
+    function toggleLoading() {
+      loadingMessage.classList.toggle("invisible");
+    }
+    toggleLoading();
     return fetch(apiUrl)
       .then(function (response) {
         return response.json();
       })
       .then(function (json) {
+        toggleLoading();
         json.results.forEach(function (item) {
           let pokemon = {
             name: item.name,
@@ -69,10 +75,7 @@ let pokemonRepository = (function () {
         item.moves = [];
         for (let i = 0; i < details.moves.length; i++) {
           item.moves.push(details.moves[i].move);
-          // console.log(item.moves);
         }
-
-        // item.moves = details.moves[0].move;
       })
       .catch(function (e) {
         console.error(e);
@@ -97,6 +100,3 @@ pokemonRepository.loadList().then(function () {
     pokemonRepository.addListItem(pokemon);
   });
 });
-
-// button.innerText = `Name: ${pokemon.name} (height: ${pokemon.height})`;
-// button.classList.add("button-main");
