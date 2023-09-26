@@ -1,21 +1,7 @@
 let pokemonRepository = (function () {
-  let pokemonList = [
-    {
-      name: "Charizard",
-      height: 1.7,
-      type: ["fire", "flying"],
-    },
-    {
-      name: "Ivysaur",
-      height: 1,
-      type: ["grass", "poison"],
-    },
-    {
-      name: "Pidgeot",
-      height: 1.5,
-      type: ["flying", "normal"],
-    },
-  ];
+  let pokemonList = [];
+
+  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
 
   function getAll() {
     return pokemonList;
@@ -50,19 +36,40 @@ let pokemonRepository = (function () {
     listItem.appendChild(button);
   }
 
+  function loadList() {
+    return fetch(apiUrl)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (json) {
+        json.results.forEach(function (item) {
+          let pokemon = {
+            name: item.name,
+            detailsUrl: item.url,
+          };
+          add(pokemon);
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   return {
     getAll: getAll,
 
     add: add,
 
     addListItem: addListItem,
+
+    loadList: loadList,
   };
 })();
 
-let pokemonResult = pokemonRepository.getAll();
-
-pokemonResult.forEach((pokemon) => {
-  pokemonRepository.addListItem(pokemon);
+pokemonRepository.loadList().then(function () {
+  pokemonRepository.getAll().forEach((pokemon) => {
+    pokemonRepository.addListItem(pokemon);
+  });
 });
 
 // button.innerText = `Name: ${pokemon.name} (height: ${pokemon.height})`;
