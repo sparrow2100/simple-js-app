@@ -44,7 +44,7 @@ h2 {
   padding: 50px;
   border-radius: 5px;
   margin-top: 20px;
-  border: 1px solid #d7dcdd;
+  border: 1px solid #d7e4e8;
 }
 
 .invisible {
@@ -53,4 +53,56 @@ h2 {
 
 .visible {
   display: block;
+}
+
+/* Modal Styles */
+
+#modal-container {
+  display: none;
+}
+
+#modal-container.is-visible {
+  position: fixed;
+  padding: 20px;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  overflow: auto;
+  display: grid;
+  text-align: center;
+}
+
+.modal {
+  margin: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  background: whitesmoke;
+  width: 100%;
+  max-width: 700px;
+  text-align: left;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.modal h1 {
+  text-align: left;
+}
+
+.modal-close {
+  float: right;
+  border: 0;
+  background-color: red;
+  color: #993a34;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 50%;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  cursor: pointer;
 }
