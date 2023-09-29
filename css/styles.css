@@ -19,11 +19,9 @@ h2 {
   padding: 15px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 5px;
-  width: 500px;
+  width: 60%;
   display: block;
-  margin: 0 auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px auto;
 }
 
 .button-main:hover,
@@ -84,19 +82,20 @@ h2 {
   width: 100%;
   max-width: 700px;
   text-align: left;
-  padding: 20px;
+  padding: 30px;
   border-radius: 5px;
 }
 
 .modal h1 {
   text-align: left;
+  padding-left: 20px;
 }
 
 .modal-close {
   float: right;
   border: 0;
   background-color: red;
-  color: #993a34;
+  color: white;
   padding-right: 10px;
   padding-left: 10px;
   border-radius: 50%;
@@ -105,4 +104,31 @@ h2 {
 .modal-close:hover,
 .modal-close:focus {
   cursor: pointer;
+}
+
+.pokemon-image {
+  height: 150px;
+}
+
+.div-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  padding-left: 20px;
+}
+
+.flex-child {
+  padding-right: 200px;
+}
+
+@media all and (max-width: 500px) {
+  .button-main {
+    font-size: 15px;
+    width: 85%;
+    margin: 20px 0px;
+  }
+
+  .flex-child {
+    padding-right: 20px;
+  }
 }

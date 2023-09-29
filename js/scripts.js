@@ -38,14 +38,29 @@ let pokemonRepository = (function () {
       modalTitle.innerText = details.name;
       modal.appendChild(modalTitle);
 
-      //add subtitle
+      //add flex div
+      let flexDiv = document.createElement("div");
+      flexDiv.classList.add("div-flex");
+      modal.appendChild(flexDiv);
+
+      // add left flex child
+      let flexChild = document.createElement("div");
+      flexChild.classList.add("flex-child");
+      flexDiv.appendChild(flexChild);
+
+      //add subtitle "height"
+      let heightDetails = document.createElement("p");
+      heightDetails.innerText = `Height: ${details.height}`;
+      flexChild.appendChild(heightDetails);
+
+      //add subtitle "types"
       let modalDetails = document.createElement("p");
       modalDetails.innerText = "Types:";
-      modal.appendChild(modalDetails);
+      flexChild.appendChild(modalDetails);
 
       //add unordered list
       let listElement = document.createElement("ul");
-      modal.appendChild(listElement);
+      flexChild.appendChild(listElement);
 
       //get and add types
       let types = [];
@@ -62,13 +77,15 @@ let pokemonRepository = (function () {
       //add image
       let pokemonImage = document.createElement("img");
       pokemonImage.src = details.sprites.front_default;
-      modal.appendChild(pokemonImage);
+      pokemonImage.classList.add("pokemon-image");
+      flexDiv.appendChild(pokemonImage);
 
       //add event listener to close button
       closeButton.addEventListener("click", hideModal);
     });
   }
 
+  //create a list displaying the names of the pokemon
   function addListItem(pokemon) {
     let list = document.querySelector(".pokemon-list");
 
