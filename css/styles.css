@@ -6,33 +6,15 @@
 h1 {
   text-align: center;
   font-size: 30px;
+  padding-top: 30px;
 }
 
 h2 {
   text-align: center;
 }
 
-.button-main {
-  background-color: #2d7489;
-  color: white;
-  border: none;
-  padding: 15px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  border-radius: 5px;
-  width: 60%;
-  display: block;
-  margin: 20px auto;
-}
-
-.button-main:hover,
-.button-main:focus {
-  background-color: #296272;
-  cursor: pointer;
-  transition: color 250ms ease-in-out;
-}
-
-.pokemon-list {
-  list-style-type: none;
+.custom-button {
+  width: 100%;
 }
 
 .main {
@@ -60,7 +42,7 @@ h2 {
 }
 
 #modal-container.is-visible {
-  position: fixed;
+  /* position: fixed;
   padding: 20px;
   box-sizing: border-box;
   top: 0;
@@ -71,22 +53,15 @@ h2 {
   z-index: 999;
   overflow: auto;
   display: grid;
-  text-align: center;
+  text-align: center; */
+  display: grid;
 }
 
 .modal {
-  margin: auto;
-  display: inline-block;
-  box-sizing: border-box;
-  background: whitesmoke;
-  width: 100%;
-  max-width: 700px;
-  text-align: left;
-  padding: 30px;
-  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.3);
 }
 
-.modal h1 {
+.modal-dialog h1 {
   text-align: left;
   padding-left: 20px;
 }
@@ -122,9 +97,9 @@ h2 {
 }
 
 @media all and (max-width: 500px) {
-  .button-main {
-    font-size: 15px;
-    width: 85%;
+  .custom-button {
+    font-size: 13px;
+    width: 100%;
     margin: 20px 0px;
   }
 

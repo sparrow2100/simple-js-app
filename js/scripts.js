@@ -23,25 +23,41 @@ let pokemonRepository = (function () {
       let modalContainer = document.getElementById("modal-container");
       modalContainer.classList.add("is-visible");
       modalContainer.innerHTML = "";
+
       let modal = document.createElement("div");
-      modal.classList.add("modal");
+      modal.classList.add("modal-dialog");
       modalContainer.appendChild(modal);
 
-      //add modal content
+      const modalContent = document.createElement("div");
+      modalContent.classList.add("modal-content");
+      modal.appendChild(modalContent);
+
+      const modalHeader = document.createElement("div");
+      modalHeader.classList.add("modal-header");
+      modalContent.appendChild(modalHeader);
+
+      // add modal content
       let closeButton = document.createElement("button");
-      closeButton.classList.add("modal-close");
-      closeButton.innerText = "X";
-      modal.appendChild(closeButton);
+      closeButton.type = "button";
+      closeButton.classList.add("close");
+      closeButton.dataset.dismiss = "modal";
+      closeButton.ariaLabel = "Close";
+      modalHeader.appendChild(closeButton);
+
+      const closeButtonContent = document.createElement("span");
+      closeButtonContent.innerHTML = "&times;";
+      closeButtonContent.ariaHidden = "true";
+      closeButton.appendChild(closeButtonContent);
 
       //add title
       let modalTitle = document.createElement("h1");
       modalTitle.innerText = details.name;
-      modal.appendChild(modalTitle);
+      modalContent.appendChild(modalTitle);
 
       //add flex div
       let flexDiv = document.createElement("div");
       flexDiv.classList.add("div-flex");
-      modal.appendChild(flexDiv);
+      modalContent.appendChild(flexDiv);
 
       // add left flex child
       let flexChild = document.createElement("div");
@@ -87,13 +103,16 @@ let pokemonRepository = (function () {
 
   //create a list displaying the names of the pokemon
   function addListItem(pokemon) {
-    let list = document.querySelector(".pokemon-list");
+    let list = document.getElementById("ul-pokemon");
 
     let listItem = document.createElement("li");
+    listItem.classList.add("list-group-item");
     let button = document.createElement("button");
 
     button.innerText = pokemon.name;
-    button.classList.add("button-main");
+    button.classList.add("btn");
+    button.classList.add("btn-info");
+    button.classList.add("custom-button");
     button.addEventListener("click", function () {
       showDetails(pokemon);
     });
