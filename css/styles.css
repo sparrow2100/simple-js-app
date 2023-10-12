@@ -96,6 +96,11 @@ h2 {
   padding-right: 200px;
 }
 
+/* Hide items that don't match the search criteria */
+.hide {
+  display: none;
+}
+
 @media all and (max-width: 500px) {
   .custom-button {
     font-size: 13px;
