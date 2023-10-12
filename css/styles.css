@@ -13,6 +13,11 @@ h2 {
   text-align: center;
 }
 
+.nav-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .custom-button {
   width: 100%;
 }
