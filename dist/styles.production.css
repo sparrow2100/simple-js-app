@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 * {
   font-family: Poppins, sans-serif;
   font-size: 20px;
@@ -14,7 +21,11 @@ h2 {
 }
 
 .nav-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
   justify-content: flex-end;
 }
 
@@ -48,6 +59,7 @@ h2 {
 }
 
 #modal-container.is-visible {
+  display: -ms-grid;
   display: grid;
 }
 
@@ -60,8 +72,15 @@ h2 {
 }
 
 .div-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: left;
+  -ms-flex-pack: left;
   justify-content: left;
   padding-left: 20px;
 }
