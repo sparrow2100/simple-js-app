@@ -1,7 +1,7 @@
-let pokemonRepository = (function () {
-  let pokemonList = [];
+const pokemonRepository = (function () {
+  const pokemonList = [];
 
-  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
+  const apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
 
   function getAll() {
     return pokemonList;
@@ -20,11 +20,11 @@ let pokemonRepository = (function () {
       console.log(details);
 
       //set up modal container and modal
-      let modalContainer = document.getElementById("modal-container");
+      const modalContainer = document.getElementById("modal-container");
       modalContainer.classList.add("is-visible");
       modalContainer.innerHTML = "";
 
-      let modal = document.createElement("div");
+      const modal = document.createElement("div");
       modal.classList.add("modal-dialog");
       modalContainer.appendChild(modal);
 
@@ -37,7 +37,7 @@ let pokemonRepository = (function () {
       modalContent.appendChild(modalHeader);
 
       // add modal content
-      let closeButton = document.createElement("button");
+      const closeButton = document.createElement("button");
       closeButton.type = "button";
       closeButton.classList.add("close");
       closeButton.dataset.dismiss = "modal";
@@ -50,48 +50,48 @@ let pokemonRepository = (function () {
       closeButton.appendChild(closeButtonContent);
 
       //add title
-      let modalTitle = document.createElement("h1");
+      const modalTitle = document.createElement("h1");
       modalTitle.innerText = details.name;
       modalContent.appendChild(modalTitle);
 
       //add flex div
-      let flexDiv = document.createElement("div");
+      const flexDiv = document.createElement("div");
       flexDiv.classList.add("div-flex");
       modalContent.appendChild(flexDiv);
 
       // add left flex child
-      let flexChild = document.createElement("div");
+      const flexChild = document.createElement("div");
       flexChild.classList.add("flex-child");
       flexDiv.appendChild(flexChild);
 
       //add subtitle "height"
-      let heightDetails = document.createElement("p");
+      const heightDetails = document.createElement("p");
       heightDetails.innerText = `Height: ${details.height}`;
       flexChild.appendChild(heightDetails);
 
       //add subtitle "types"
-      let modalDetails = document.createElement("p");
+      const modalDetails = document.createElement("p");
       modalDetails.innerText = "Types:";
       flexChild.appendChild(modalDetails);
 
       //add unordered list
-      let listElement = document.createElement("ul");
+      const listElement = document.createElement("ul");
       flexChild.appendChild(listElement);
 
       //get and add types
-      let types = [];
+      const types = [];
       for (let i = 0; i < details.types.length; i++) {
         types.push(details.types[i].type.name);
       }
       console.log(types);
       types.forEach(function (item) {
-        let listItem = document.createElement("li");
+        const listItem = document.createElement("li");
         listItem.innerText = item;
         listElement.appendChild(listItem);
       });
 
       //add image
-      let pokemonImage = document.createElement("img");
+      const pokemonImage = document.createElement("img");
       pokemonImage.src = details.sprites.front_default;
       pokemonImage.classList.add("pokemon-image");
       flexDiv.appendChild(pokemonImage);
@@ -103,11 +103,11 @@ let pokemonRepository = (function () {
 
   //create a list displaying the names of the pokemon
   function addListItem(pokemon) {
-    let list = document.getElementById("ul-pokemon");
+    const list = document.getElementById("ul-pokemon");
 
-    let listItem = document.createElement("li");
+    const listItem = document.createElement("li");
     listItem.classList.add("list-group-item");
-    let button = document.createElement("button");
+    const button = document.createElement("button");
 
     button.innerText = pokemon.name;
     button.classList.add("btn");
@@ -122,7 +122,7 @@ let pokemonRepository = (function () {
   }
 
   function loadList() {
-    let loadingMessage = document.getElementById("loading-message");
+    const loadingMessage = document.getElementById("loading-message");
     function toggleLoading() {
       loadingMessage.classList.toggle("invisible");
     }
@@ -134,7 +134,7 @@ let pokemonRepository = (function () {
       .then(function (json) {
         toggleLoading();
         json.results.forEach(function (item) {
-          let pokemon = {
+          const pokemon = {
             name: item.name,
             detailsUrl: item.url,
           };
@@ -147,7 +147,7 @@ let pokemonRepository = (function () {
   }
 
   function loadDetails(pokemon) {
-    let url = pokemon.detailsUrl;
+    const url = pokemon.detailsUrl;
     return fetch(url)
       .then(function (response) {
         return response.json();
@@ -172,9 +172,9 @@ let pokemonRepository = (function () {
 })();
 
 //add search feature
-let searchBar = document.getElementById("search");
+const searchBar = document.getElementById("search");
 searchBar.addEventListener("input", (e) => {
-  let searchValue = e.target.value.toLowerCase();
+  const searchValue = e.target.value.toLowerCase();
   console.log(searchValue);
   document
     .querySelectorAll(".pokemon-list .list-group-item")
@@ -193,12 +193,12 @@ pokemonRepository.loadList().then(function () {
 });
 
 function hideModal() {
-  let modalContainer = document.getElementById("modal-container");
+  const modalContainer = document.getElementById("modal-container");
   modalContainer.classList.remove("is-visible");
 }
 //hide the modal when escape key is pressed
 window.addEventListener("keydown", (event) => {
-  let modalContainer = document.getElementById("modal-container");
+  const modalContainer = document.getElementById("modal-container");
   if (
     event.key === "Escape" &&
     modalContainer.classList.contains("is-visible")
@@ -207,9 +207,9 @@ window.addEventListener("keydown", (event) => {
   }
 });
 //hide the modal when the modal container is clicked
-let modalContainer = document.getElementById("modal-container");
+const modalContainer = document.getElementById("modal-container");
 modalContainer.addEventListener("click", (event) => {
-  let target = event.target;
+  const target = event.target;
   if (target === modalContainer) {
     hideModal();
   }
