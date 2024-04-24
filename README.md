@@ -4,7 +4,7 @@
 
 Simply follow the link [https://sparrow2100.github.io/simple-js-app/](https://sparrow2100.github.io/simple-js-app/)! Click on a pokemon's name to display a modal with more information, or search for your favourite pokemon.
 
-## Resources
+## Resources Used
 
 - [Bootstrap](https://getbootstrap.com/)
 - [PokeAPI](https://pokeapi.co/docs/v2)
